@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: configServer
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+          #去 resources/config/ 底下找設定檔
+server:
+  port: 8888

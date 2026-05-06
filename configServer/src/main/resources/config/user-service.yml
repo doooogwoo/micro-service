@@ -1,0 +1,29 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/ecom_user
+      database: ecom_user
+
+
+#  datasource:
+#    url: jdbc:postgresql://localhost:5433/userdb
+##    url: jdbc:postgresql://localhost:27017/user
+#    username: micro
+#    password: micro123
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#  h2:
+#    console:
+#      enabled: true
+#  datasource:
+#    url: jdbc:h2:mem:test
+#    jpa:
+#      show-sql: true
+#      hibernate:
+#        ddl-auto: create
+server:
+  port: 8082
