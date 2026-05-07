@@ -31,3 +31,5 @@ management:
 #        ddl-auto: create
 server:
   port: 8081
+app:
+  message: "Hello Product!"
