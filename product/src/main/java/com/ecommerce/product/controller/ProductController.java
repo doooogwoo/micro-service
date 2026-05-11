@@ -28,6 +28,17 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
+
+    //讓別的服務查詢商品。
+    //這裡的id是String，因為我們的ProductService裡面是用String當作ID的類型。
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductResponse> getProductById(@PathVariable String id) {
+        return(productService.getProductById(id))
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+
     @PutMapping("/{id}")
     public ResponseEntity<ProductResponse> updateProduct(
             @PathVariable Long id,
