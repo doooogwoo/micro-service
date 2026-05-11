@@ -2,8 +2,10 @@ package com.ecommerce.oder.service;
 
 
 import com.ecommerce.oder.clients.ProductServiceClient;
+import com.ecommerce.oder.clients.UserServiceClient;
 import com.ecommerce.oder.dto.CartItemRequest;
 import com.ecommerce.oder.dto.ProductResponse;
+import com.ecommerce.oder.dto.UserResponse;
 import com.ecommerce.oder.service.model.CartItem;
 import com.ecommerce.oder.repository.CartItemRepository;
 import jakarta.transaction.Transactional;
@@ -22,6 +24,7 @@ public class CartService {
     private final CartItemRepository cartItemRepository;
     //private final UserRepository userRepository;
     private final ProductServiceClient productServiceClient;
+    private final UserServiceClient userServiceClient;
     public boolean addToCart(String userId, CartItemRequest request) {
         // Look for product
         ProductResponse productResponse = productServiceClient.getProductDetails(request.getProductId());
@@ -34,6 +37,9 @@ public class CartService {
 //        Product product = productOpt.get();
 //        if (product.getStockQuantity() < request.getQuantity())
 //            return false;
+        //進行userServiceClient調用，確認userId是否存在
+        UserResponse userResponse = userServiceClient.getUserDetails(userId);
+        if (userResponse == null) return false;
 
 
 //        Optional<User> userOpt = userRepository.findById(Long.valueOf(userId));
